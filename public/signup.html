@@ -1,0 +1,92 @@
+<html>
+    <head>
+        <style>
+            h1{
+                font-family: Calibri, Helvetica, sans-serif; 
+                font-size: 45px;
+                text-align: center;
+                margin-bottom: 25px;
+            } 
+            #nameandpass{
+                font-family: Calibri, Helvetica, sans-serif;  
+                border: 3px solid #fbb13c;
+                /* background-color: white; */
+                border-radius: 10px;
+            }
+            form{
+                /* padding-top: 8%; */
+                padding-right: 35%;
+                padding-left: 35%;
+                padding-bottom: 20px;
+            }
+            input{
+                margin: 20px;
+                margin-top: 10px;
+                margin-bottom: 20px;
+                font-size:20px;
+            }
+            label{
+                font-size: 25px;
+                margin-left: 20px;
+            }
+            #pass{
+                margin-bottom: 30px;
+            }
+            button{
+                padding: 10px;
+                padding-left: 20px;
+                padding-right: 20px;
+                margin-left: 20px;
+                margin-bottom: 20px;
+                background-color: #fbb13c;
+                border-radius: 5px;
+                border-color: #fbb13c;
+                color: white;
+                font-size: 20px;
+            }
+            hr{
+                width: 90%;
+                color: black;
+                margin-bottom: 30px;
+            }
+            a{
+                margin-left: 27%;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="/signup" method="POST">
+
+            <div id="nameandpass">
+                <h1>Signup</h1>
+                <hr>
+                <label id="namelabel">Username: </label>
+                <br>
+                <input type = "Text" placeholder="Enter Username" id="name"  name="name">
+                <br>
+                <label>E-mail: </label>
+                <br>
+                <input type = "email" placeholder="abc@xyz.com" id="pass" name="email">
+                <br>
+                <label>Address: </label>
+                <br>
+                <input type = "text" placeholder="Enter Address" id="pass" name="address">
+                <br>
+                <label>Phone number: </label>
+                <br>
+                <input type = "tel" placeholder="Enter Phone number" id="pass" name="number">
+                <br>
+                <label>Password: </label>
+                <br>
+                <input type = "password" placeholder="Enter Password" id="pass" name="password">
+                <br>
+                <label>Confirm Password: </label>
+                <br>
+                <input type = "password" placeholder="Confirm Password" id="pass" name = "cpassword">
+                <br>
+                <button type="submit" value="Submit" id=""submit>Signup</button>
+                <a href="/login">Already a user?</a>
+            </div>
+        </form>
+    </body>
+</html>

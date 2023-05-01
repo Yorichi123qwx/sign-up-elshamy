@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <style>
+            h1{
+                font-family: Calibri, Helvetica, sans-serif; 
+                font-size: 45px;
+                text-align: center;
+                margin-bottom: 25px;
+            } 
+            #nameandpass{
+                font-family: Calibri, Helvetica, sans-serif;  
+                border: 3px solid #fbb13c;
+                /* background-color: white; */
+                border-radius: 10px;
+            }
+            form{
+                padding-top: 8%;
+                padding-right: 35%;
+                padding-left: 35%;
+                padding-bottom: 20px;
+            }
+            input{
+                margin: 20px;
+                margin-top: 10px;
+                margin-bottom: 20px;
+                font-size:20px;
+            }
+            label{
+                font-size: 25px;
+                margin-left: 20px;
+            }
+            #pass{
+                margin-bottom: 30px;
+            }
+            button{
+                padding: 10px;
+                padding-left: 20px;
+                padding-right: 20px;
+                margin-left: 20px;
+                margin-bottom: 20px;
+                background-color: #fbb13c;
+                border-radius: 5px;
+                border-color: #fbb13c;
+                color: white;
+                font-size: 20px;
+            }
+            hr{
+                width: 90%;
+                color: black;
+                margin-bottom: 30px;
+            }
+            a{
+                margin-left:27%;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="/login" method="POST">
+
+            <div id="nameandpass">
+                <h1>Login</h1>
+                <hr>
+                <label id="namelabel">E-mail: </label>
+                <br>
+                <input type = "Text" placeholder="Enter E-mail id" id="name"  name="lmail">
+                <br>
+                <label>Password: </label>
+                <br>
+                <input type = "password" placeholder="Enter Password" id="pass" name="lpassword">
+                <br>
+                <button type="submit">Login</button>
+                <a href="/signup">Don't have an account?</a>
+            </div>
+        </form>
+    </body>
+</html>
