@@ -19,7 +19,7 @@ var db = mongoose.connection;
 db.on('error',()=>console.log("Error in connecting to the database"));
 db.once('open',()=>console.log("Connected to database"))
 
-app.post("/signup",async (req,res)=>{
+app.post("public/signup",async (req,res)=>{
     try{
 
         const pass = req.body.password;
