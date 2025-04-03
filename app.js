@@ -1,6 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
+const cors = require("cors");
+app.use(cors());
 const cookieParser = require("cookie-parser");
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
@@ -25,7 +27,7 @@ const User = mongoose.model("User", userSchema);
 
 const generateAPIKey = () => crypto.randomBytes(16).toString("hex");
 
-app.post("./index", async (req, res) => {
+app.post("/index", async (req, res) => {
     try {
         const { username, name, email, password } = req.body;
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -38,7 +40,7 @@ app.post("./index", async (req, res) => {
     }
 });
 
-app.post("./index", async (req, res) => {
+app.post("/index", async (req, res) => {
     try {
         const { email, password } = req.body;
         const user = await User.findOne({ email });
