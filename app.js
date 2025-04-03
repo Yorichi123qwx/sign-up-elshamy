@@ -25,7 +25,7 @@ const User = mongoose.model("User", userSchema);
 
 const generateAPIKey = () => crypto.randomBytes(16).toString("hex");
 
-app.post("./public/signup", async (req, res) => {
+app.post("./public/index", async (req, res) => {
     try {
         const { username, name, email, password } = req.body;
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -38,7 +38,7 @@ app.post("./public/signup", async (req, res) => {
     }
 });
 
-app.post("./public/login", async (req, res) => {
+app.post("./public/index", async (req, res) => {
     try {
         const { email, password } = req.body;
         const user = await User.findOne({ email });
@@ -53,7 +53,7 @@ app.post("./public/login", async (req, res) => {
     }
 });
 
-app.get("/profile/show", async (req, res) => {
+app.get("/public/index", async (req, res) => {
     const token = req.cookies.token;
     if (!token) return res.status(401).json({ status: "error", message: "Unauthorized" });
     try {
@@ -67,7 +67,7 @@ app.get("/profile/show", async (req, res) => {
     }
 });
 
-app.put("/profile/update", async (req, res) => {
+app.put("/public/index", async (req, res) => {
     const token = req.cookies.token;
     if (!token) return res.status(401).json({ status: "error", message: "Unauthorized" });
     try {
