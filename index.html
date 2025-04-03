@@ -223,32 +223,69 @@
 
     <!-- JavaScript داخل الملف مباشرة -->
     <script>
-        const links = document.querySelectorAll(".sign-login a");
-        const forms = document.querySelector(".forms");
-        const showHideIcons = document.querySelectorAll(".hide-show");
+        document.addEventListener("DOMContentLoaded", () => {
+    const loginForm = document.querySelector(".form.login form");
+    const signupForm = document.querySelector(".form.signup form");
 
-        showHideIcons.forEach(icon => {
-            icon.addEventListener("click", () => {
-                let passwordFields = icon.parentElement.parentElement.querySelectorAll(".password");
+    // ✅ تسجيل الدخول
+    loginForm.addEventListener("submit", async (event) => {
+        event.preventDefault(); // منع إعادة تحميل الصفحة
 
-                passwordFields.forEach(password => {
-                    if (password.type === "password") {
-                        password.type = "text";
-                        icon.classList.replace("bx-hide", "bx-show");
-                    } else {
-                        password.type = "password";
-                        icon.classList.replace("bx-show", "bx-hide");
-                    }
-                });
+        const email = loginForm.querySelector("input[type='email']").value;
+        const password = loginForm.querySelector("input[type='password']").value;
+
+        try {
+            const response = await fetch("http://localhost:8080/index", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password })
             });
-        });
 
-        links.forEach(link => {
-            link.addEventListener("click", (e) => {
-                e.preventDefault();
-                forms.classList.toggle("Show-Signup");
+            const data = await response.json();
+            if (response.ok) {
+                alert("✅ تسجيل الدخول ناجح! مرحبًا بك 🎉");
+            } else {
+                alert("❌ " + data.message);
+            }
+        } catch (err) {
+            console.error("خطأ:", err);
+            alert("❌ حدث خطأ أثناء تسجيل الدخول.");
+        }
+    });
+
+    // ✅ إنشاء حساب جديد
+    signupForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const email = signupForm.querySelector("input[type='email']").value;
+        const password = signupForm.querySelectorAll("input[type='password']")[0].value;
+        const confirmPassword = signupForm.querySelectorAll("input[type='password']")[1].value;
+
+        if (password !== confirmPassword) {
+            alert("❌ كلمتا المرور غير متطابقتين!");
+            return;
+        }
+
+        try {
+            const response = await fetch("http://localhost:8080/index", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password, username: email.split("@")[0], name: "User" })
             });
-        });
+
+            const data = await response.json();
+            if (response.ok) {
+                alert("✅ تم إنشاء الحساب بنجاح! يمكنك تسجيل الدخول الآن.");
+            } else {
+                alert("❌ " + data.message);
+            }
+        } catch (err) {
+            console.error("خطأ:", err);
+            alert("❌ حدث خطأ أثناء إنشاء الحساب.");
+        }
+    });
+});
+
     </script>
 </body>
 </html>
