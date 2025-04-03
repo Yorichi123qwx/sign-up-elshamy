@@ -25,7 +25,7 @@ const User = mongoose.model("User", userSchema);
 
 const generateAPIKey = () => crypto.randomBytes(16).toString("hex");
 
-app.post("/index", async (req, res) => {
+app.post("./index", async (req, res) => {
     try {
         const { username, name, email, password } = req.body;
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -38,7 +38,7 @@ app.post("/index", async (req, res) => {
     }
 });
 
-app.post("/index", async (req, res) => {
+app.post("./index", async (req, res) => {
     try {
         const { email, password } = req.body;
         const user = await User.findOne({ email });
